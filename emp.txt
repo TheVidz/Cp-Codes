@@ -1,0 +1,5 @@
+abcd 0
+agrim 100
+vidit 200
+gorav 300
+shikhar 500
