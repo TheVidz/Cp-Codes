@@ -31,8 +31,29 @@ const ll mod = 1000000007;
 
 void solve(){
 	
-	int n;
-    cin>>n;
+	ll n,m;
+    cin>>n>>m;
+    ll curr=1;
+    ll ans=0;
+    for (int i = 0; i < m; i++)
+    {
+        ll temp;
+        cin>>temp;
+        if (temp>=curr)
+        {
+            ans+=temp-curr;
+
+        }else{
+            ans+=n+temp-curr;
+        }
+        curr=temp;
+        
+        
+    }
+    cout<<ans<<endl;
+
+    
+
     
 }
 
@@ -45,7 +66,7 @@ int main()
 
 
     int t=1;
-    cin>>t;
+    //cin>>t;
 
     while(t--) 
     	solve();
