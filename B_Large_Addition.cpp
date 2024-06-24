@@ -16,43 +16,16 @@ const int INF = 1e9;
 const ll mod = 1000000007;
 
 void solve(){
-    
-    ll n;
-    cin>>n;
-    vll a(n),b(n);
-    forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
 
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
+    string a;
+    cin>>a;
+    if(a[0]!='1'||count(a.begin(), a.end()-1,'0')){
+        pno;
+    }else if(a[a.length()-1]=='9'){
+        pno;
+    }else{
+        pyes;
     }
-
-
-    forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
-        }
-    }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
-    }
-    pno;
 }
 
 int main()
@@ -63,10 +36,9 @@ int main()
     
     int t=1;
     cin>>t;
-
+    
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

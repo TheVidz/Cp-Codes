@@ -17,42 +17,17 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll a(n),b(n);
-    forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
+    ll n,a,b;
+    cin>>n>>a>>b;
+    if(a>=b){
+        cout<<a*n<<endl;
+    }else if(n < b - a){
+        cout<<b*n - ((n*(n-1))/2)<<endl;
+    }else{
+        ll x = b-a;
+        ll ans = max(b*x - ((x*(x-1))/2) + (n-x)*a , b*(x+1) - ((x*(x+1))/2) + (n-x-1)*a);
+        cout<<ans<<endl;
     }
-
-
-    forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
-        }
-    }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
-    }
-    pno;
 }
 
 int main()
@@ -63,10 +38,9 @@ int main()
     
     int t=1;
     cin>>t;
-
+    
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

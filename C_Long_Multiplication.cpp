@@ -4,8 +4,6 @@ using namespace std;
 #define pb push_back 
 #define all(v) v.begin(), v.end()
 #define forn(i, k, n) for(int i = k; i < n; i++)
-#define pyes cout<<"YES"<<endl;return
-#define pno cout<<"NO"<<endl;return
 
 typedef long long ll;
 typedef pair<ll, ll> pll;
@@ -17,10 +15,27 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    ll a[n];
-    forn(i,0,n) cin>>a[i];
+    string x, y;
+    cin>>x>>y;
+
+    int i = 0;
+    while(x[i]==y[i]){
+        i++;
+    }
+    if(x[i]<y[i]){
+        string temp = x;
+        x = y;
+        y = temp;
+    }
+    forn(j,i+1,x.length()){
+        if(x[j]>y[j]){
+            char temp = x[j];
+            x[j] = y[j];
+            y[j] = temp;
+        }
+    }
+    cout<<x<<endl;
+    cout<<y<<endl;
     
 }
 
@@ -32,9 +47,10 @@ int main()
     
     int t=1;
     cin>>t;
-    
+
         while(t--) 
             solve();
 
+        
         return 0;
-}
+    }

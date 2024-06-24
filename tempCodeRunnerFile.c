@@ -19,40 +19,9 @@ void solve(){
     
     ll n;
     cin>>n;
-    vll a(n),b(n);
+    ll a[n];
     forn(i,0,n) cin>>a[i];
     
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
-    forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
-        }
-    }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
-    }
-    pno;
 }
 
 int main()
@@ -60,13 +29,21 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    
-    int t=1;
-    cin>>t;
-
-        while(t--) 
-            solve();
-
-        
-        return 0;
+    int n;
+    vector<ll> arr = {1,2,3,42,55,60};
+    int k = 42;
+    int lo = 0, hi = n-1;
+    while(hi-lo>0){
+        int mid = (lo + hi)/2;
+        if(arr[mid]==k){
+            break;
+        }else if(arr[mid]>k){
+            hi = mid - 1;
+        }else{
+            lo = mid+1;
+        }
     }
+    cout<<arr[lo]<<endl;
+
+        return 0;
+}

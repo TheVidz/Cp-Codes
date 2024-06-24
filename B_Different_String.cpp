@@ -17,42 +17,33 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll a(n),b(n);
-    forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
+    string s;
+    cin>>s;
+    map<char,int> mpp;
+    for(char x:s){
+        mpp[x]++;
     }
-
-
-    forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
+    if(mpp.size()<=1){
+        pno;
+    }else{
+        cout<<"YES"<<endl;
+        char y = s[0];
+        int i = 0;
+        while(s[i]==y){
+            i++;
+        }
+        cout<<s[i];
+        bool c = true;
+        for(char x:s){
+            if(x!=s[i]){
+                cout<<x;
+            }else if(!c){cout<<x;}else{
+                c = false;
             }
         }
+        cout<<endl;
     }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
-    }
-    pno;
+    
 }
 
 int main()
@@ -67,6 +58,5 @@ int main()
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

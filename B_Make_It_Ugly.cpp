@@ -19,40 +19,21 @@ void solve(){
     
     ll n;
     cin>>n;
-    vll a(n),b(n);
+    ll a[n];
     forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
+    ll lst = -1, ans = n;
     forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
+        if(a[i]!=a[0]){
+            ans = min(ans, i - lst -1);
+            lst = i;
         }
     }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
+    ans = min(ans, n - lst - 1);
+    if(ans==n){
+        cout<<"-1"<<endl;
+    }else{
+        cout<<ans<<endl;
     }
-    pno;
 }
 
 int main()
@@ -67,6 +48,5 @@ int main()
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

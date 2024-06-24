@@ -19,54 +19,46 @@ void solve(){
     
     ll n;
     cin>>n;
-    vll a(n),b(n);
+    ll a[n];
     forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
+    map<ll,ll> mpp;
     forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
+        if(mpp[a[i]]){
+            mpp[a[i]] = mpp.size();
+        }else{
+            mpp[a[i]] = mpp.size()+1;
         }
     }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
+    ll ans = 0;
+    for(auto x:mpp){
+        ans+= x.second;
     }
-    pno;
+    cout<<ans<<endl;
+
 }
 
 int main()
 {
+
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+    #ifndef ONLINE_JUDGE
+    // for getting input from input.txt
+
+    freopen("input1.txt", " r",stdin) ;
+    // for writing output to output .txt
+    freopen("output1.txt" , "w" , stdout);
+
+#endif
+
+
     
     int t=1;
     cin>>t;
-
+    
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

@@ -17,42 +17,40 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll a(n),b(n);
-    forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
-    forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
+    ll n,m;
+    cin>>n>>m;
+    char a[n][m];
+    ll mx1 = 0, x1 = -1; 
+    forn(i,0,n) {
+        ll temp = 0;
+        forn(j,0,m){
+            cin>>a[i][j];
+            if(a[i][j]=='#'){
+                temp++;
             }
         }
-    }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
+        mx1 = max(temp,mx1);
+        if(mx1==temp){
+            x1 = i;
         }
-            
     }
-    pno;
+
+    ll my1 = 0, y1 = -1; 
+    forn(i,0,m) {
+        ll temp = 0;
+        forn(j,0,n){
+            
+            if(a[j][i]=='#'){
+                temp++;
+            }
+        }
+        my1 = max(temp,my1);
+        if(my1==temp){
+            y1 = i;
+        }
+    }
+    cout<<x1+1<<" "<<y1+1<<endl;
+    
 }
 
 int main()
@@ -67,6 +65,5 @@ int main()
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

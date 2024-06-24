@@ -41,11 +41,11 @@ void solve(){
         cout<<"YES"<<endl;
         return;
     }
-    bool imp = 1;
+    bool poss = false;
     if(grid[0][0]==grid[0][n-1]){
         forn(j,0,n){
             if(grid[0][0]!=grid[0][j]){
-                imp = 0;
+                poss = true;
                 break;
             }
         }
@@ -54,7 +54,7 @@ void solve(){
     if(grid[m-1][0]==grid[m-1][n-1]){
         forn(j,0,n){
             if(grid[m-1][0]!=grid[m-1][j]){
-                imp = 0;
+                poss = true;
                 break;
             }
         }
@@ -62,7 +62,7 @@ void solve(){
     if(grid[0][0]==grid[m-1][0]){
         forn(i,0,m){
             if(grid[0][0]!=grid[i][0]){
-                imp = 0;
+                poss = true;
                 break;
             }
         }
@@ -70,12 +70,12 @@ void solve(){
     if(grid[0][n-1]==grid[m-1][n-1]){
         forn(i,0,m){
             if(grid[0][n-1]!=grid[i][n-1]){
-                imp = 0;
+                poss = true;
                 break;
             }
         }
     }
-    if(imp){
+    if(!poss){
         cout<<"NO"<<endl;
     }else{
         cout<<"YES"<<endl;

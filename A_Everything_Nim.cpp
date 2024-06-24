@@ -4,8 +4,6 @@ using namespace std;
 #define pb push_back 
 #define all(v) v.begin(), v.end()
 #define forn(i, k, n) for(int i = k; i < n; i++)
-#define pyes cout<<"YES"<<endl;return
-#define pno cout<<"NO"<<endl;return
 
 typedef long long ll;
 typedef pair<ll, ll> pll;
@@ -19,40 +17,25 @@ void solve(){
     
     ll n;
     cin>>n;
-    vll a(n),b(n);
+    ll a[n];
     forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
-
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
+    set<ll> uniq;
     forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
-        }
+        uniq.insert(a[i]);
     }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
-        }
-            
+    int ans = 0;
+    ll l = 0;
+    for(ll x:uniq){
+        ans = ~ans;
+        if(x-l>1) break;
+        l = x;
     }
-    pno;
+
+    if(ans){
+        cout<<"Alice"<<endl;
+    }else{
+        cout<<"Bob"<<endl;
+    }
 }
 
 int main()

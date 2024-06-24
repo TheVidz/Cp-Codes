@@ -15,44 +15,45 @@ typedef vector<ll> vll;
 const int INF = 1e9;
 const ll mod = 1000000007;
 
+
+ll gcd(ll a, ll b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+ 
+ll lcm(vll numbers)
+{
+    return std::accumulate(numbers.begin(), numbers.end(), 1,
+        [](ll x, ll y) { return (x * y) / gcd(x, y); });
+}
+
+
 void solve(){
     
     ll n;
     cin>>n;
-    vll a(n),b(n);
-    forn(i,0,n) cin>>a[i];
-    
-    forn(i,0,n) cin>>b[i];
+    vll k(n);
+    forn(i,0,n) cin>>k[i];
 
-    ll m;
-    cin>>m;
-    vll d(m);
-    
-    forn(i,0,m) cin>>d[i];
-
-    map<ll,ll> avail;
-
-    for(auto it:d){
-        avail[it]++;
-    }
-
-
+    ll L = lcm(k);
+    vll ans(n);
+    ll summ = 0;
     forn(i,0,n){
-        if(a[i]!=b[i]){
-            if(avail[b[i]]>0)
-                avail[b[i]]--;
-            else{
-                pno;
-            }
-        }
+
+        ans[i] = L/k[i];
+        summ+= L/k[i];
     }
-    for(auto x:b){
-        if(x==d[m-1]){
-            pyes;
+
+    if(summ < L){
+        forn(i,0,n){
+            cout<<ans[i]<<" ";
         }
-            
+    }else{
+        cout<<-1;
     }
-    pno;
+    cout<<endl;
 }
 
 int main()
@@ -67,6 +68,5 @@ int main()
         while(t--) 
             solve();
 
-        
         return 0;
-    }
+}

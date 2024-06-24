@@ -30,23 +30,33 @@ void solve(){
     
     ll n,k,q;
     cin>>n>>k>>q;
-    double a[k],b[k];
-    forn(i,0,k) cin>>a[i];
+    vl a(k+1);
+    vl b(k+1);
+    a[0] = 0;
+    b[0] = 0;
+    forn(i,1,k+1) cin>>a[i];
     
-    forn(i,0,k) cin>>b[i];
+    forn(i,1,k+1) cin>>b[i];
     
     forn(i,0,q){
         ll d;
         cin>>d;
-        int x = 0;
-        while(x<k&&a[x]<d){
-            x++;
+        ll lo =0, hi = k;
+        while(lo<=hi){
+            ll mid = lo + hi>>1;
+
+            if(a[mid] > d){
+                hi = mid - 1;
+            }else{
+                lo = mid + 1;
+            }
         }
-        x--;
-        double ans=0;
-        if(d<=a[0]) ans = d/(a[0]/b[0]);
-        else ans = b[x] + (d-a[x])/((a[x+1]-a[x])/(b[x+1]-b[x]));
-        cout<<(ll)ans<<" ";
+        if(a[hi] == d){
+                cout<<b[hi]<<" ";
+                continue;
+        }
+        long long ans = b[hi] + (d - a[hi]) * (b[hi+1]-b[hi])/(a[hi+1]-a[hi]);
+        cout<<ans<<" ";
 
     }
     cout<<endl;
