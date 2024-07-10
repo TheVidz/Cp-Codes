@@ -1,3 +1,5 @@
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -11,60 +13,76 @@ typedef long long ll;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
+typedef unsigned long long int ull;
 
 const int INF = 1e9;
 const ll mod = 1000000007;
 
 void solve(){
-    
+
     ll n,m;
     cin>>n>>m;
-    string s,c;
-    ll ind[m];
-    cin>>s;
-    
-    forn(i,0,m) cin>>ind[i];
-    cin>>c;
-    sort(ind,ind+m);
-    sort(all(c));
-    map<ll,ll> mpp;
-    for(auto x:ind){
-        mpp[x]++;
-    }
-    int i = 0;
-    vi vis(m,-1);
-
-    ll coun = m-1;
-
-    while(i<m&&vis[i]!=1){
-        vis[i] = 1;
-        ll inn = mpp.begin()->first;
-                while(mpp[inn]>1){
-            vis[coun] = 1;
-            coun--;
-            mpp[inn]--;
+    int a[n][m], b[n][m];
+    ll x = 0, y = 0;
+    forn(i,0,n){
+        forn(j,0,m){
+            char t1;
+            cin>>t1;
+            a[i][j] = t1-'0';
+            x = (x+a[i][j])%3;
         }
-        
-        s[inn-1] = c[i];
-        mpp.erase(inn);
-        i++;
     }
-    cout<<s<<endl;
+    forn(i,0,n){
+        forn(j,0,m){
+            char t2;
+            cin>>t2;
+            b[i][j] = t2-'0';
+            y = (y+b[i][j])%3;
+        }
+    }
+    int diff[n][m];
+    int d= 0;
+    forn(i,0,n){
+        forn(j,0,m){
+            diff[i][j] = abs(a[i][j] - b[i][j]);
+            d+= diff[i][j];
+            d%=3;          
+        }
+    }
+    forn(i,0,n){
+        forn(j,0,m){
+            cout<<diff[i][j];
+                    
+        }
+        cout<<endl;
+    }
+
+    cout<<d<<endl;
+    if(d%3!=0){
+        pno;
+    }
+    if(x%3==y%3){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
+    }
+
+    
 }
+int main() {
+    #ifndef ONLINE_JUDGE
+    // for getting input from input.txt
 
-int main()
-{
- 
-   ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-
+    freopen("input1.txt", " r",stdin) ;
+    // for writing output to output .txt
+    freopen("output1.txt" , "w" , stdout);
+    #endif
 
     int t=1;
     cin>>t;
     
-        while(t--) 
+    while(t--) 
             solve();
-
-        return 0;
+    return 0;
 }
+

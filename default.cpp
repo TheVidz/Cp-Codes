@@ -22,6 +22,7 @@ void solve(){
     ll a[n];
     forn(i,0,n) cin>>a[i];
     
+    
 }
 
 int main()

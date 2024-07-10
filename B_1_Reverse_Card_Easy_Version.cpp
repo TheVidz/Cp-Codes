@@ -17,32 +17,17 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n,m;
+    ll n,m,ans = 0;
     cin>>n>>m;
-    ll a[n][m], b[n][m];
-    ll x = 0, y = 0;
-    forn(i,0,n){
-        forn(j,0,m){
-            cin>>a[i][j];
-            x= (x+a[i][j])%3;
-        }
-    }
-    forn(i,0,n){
-        forn(j,0,m){
-            cin>>b[i][j];
-            y = (y+b[i][j])%3;
-        }
-    }
-    if(x%3==y%3){
-        pyes;
-    }else{
-        pno;
-    }
+    
+    for(int i=1;i<=m;i++)
+		ans+=(n+i)/(1ll*i*i);
+	cout<<ans-1<<endl;
+    
 }
 
 int main()
 {
-    
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);

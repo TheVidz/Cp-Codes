@@ -16,10 +16,7 @@ const int INF = 1e9;
 const ll mod = 1000000007;
 
 
-bool isst(vll& A){
-    
-    
-}
+
 void solve(){
     
     ll n,m;

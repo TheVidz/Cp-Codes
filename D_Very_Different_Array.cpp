@@ -35,7 +35,23 @@ void solve(){
     forn(i,0,n) cin>>a[i];
     forn(i,0,m) cin>>b[i];
     
-    
+    sort(a,a+n);
+    sort(b,b+m);
+    ll l1 = 0, r1 = m-1, l2 = 0, r2 = n-1;
+    ll ans = 0;
+    while(r2-l2>=0){
+        ll on = abs(a[r2]-b[l1]), tw = abs(a[l2]-b[r1]), mx = max(on, tw);
+        if(mx==on){
+            ans+= on;
+            l1++;
+            r2--;
+        }else{
+            ans+=tw;
+            r1--;
+            l2++;
+        }
+    }
+    cout<<ans<<endl;
 }
 
 int main()

@@ -4,8 +4,8 @@ using namespace std;
 #define pb push_back 
 #define all(v) v.begin(), v.end()
 #define forn(i, k, n) for(int i = k; i < n; i++)
-#define pyes cout<<"YES"<<endl;return
-#define pno cout<<"NO"<<endl;return
+#define pyes cout<<"YES"<<endl
+#define pno cout<<"NO"<<endl
 
 typedef long long ll;
 typedef pair<ll, ll> pll;
@@ -38,11 +38,11 @@ void solve(){
     }else{
         pno;
     }
+    
 }
 
 int main()
 {
-    
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
