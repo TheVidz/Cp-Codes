@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define pb push_back 
+#define all(v) v.begin(), v.end()
+#define forn(i, k, n) for(int i = k; i < n; i++)
+#define pyes cout<<"YES"<<endl;return
+#define pno cout<<"NO"<<endl;return
+
+typedef long long ll;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+
+const int INF = 1e9;
+const ll mod = 1000000007;
+
+void solve(){
+    
+    ll n,k;
+    cin>>n>>k;
+    ll a[k];
+    ll mx = 0, no = 0;
+    forn(i,0,k){
+        cin>>a[i];
+        if(a[i]==1){
+            no++;
+        }
+        mx = max(mx,a[i]);
+    }
+    sort(a,a+k);
+    ll ans = no;
+    if(mx==1){
+        ans--;
+    }
+    for(int i = no; i<k-1;i++){
+        ans+= (a[i]*2) -1;
+    }
+    cout<<ans<<endl;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    int t=1;
+    cin>>t;
+    
+        while(t--) 
+            solve();
+
+        return 0;
+}

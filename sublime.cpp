@@ -3,13 +3,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define pb push_back 
+#define pb push_back
 #define all(v) v.begin(), v.end()
 #define forn(i, k, n) for(int i = k; i < n; i++)
 #define pyes cout<<"YES"<<endl;return
 #define pno cout<<"NO"<<endl;return
 
 typedef long long ll;
+typedef unsigned long long ull;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
@@ -18,71 +19,72 @@ typedef unsigned long long int ull;
 const int INF = 1e9;
 const ll mod = 1000000007;
 
-void solve(){
+void merge(int arr[], int low, int mid, int high) {
+    int left = low, right = mid + 1, ind = 0;
+    int temp[high - low + 1];
 
-    ll n,m;
-    cin>>n>>m;
-    int a[n][m], b[n][m];
-    ll x = 0, y = 0;
-    forn(i,0,n){
-        forn(j,0,m){
-            char t1;
-            cin>>t1;
-            a[i][j] = t1-'0';
-            x = (x+a[i][j])%3;
+    while (left <= mid && right <= high) {
+        if (arr[left] < arr[right]) {
+            temp[ind] = arr[left];
+            left++;
+        } else {
+            temp[ind] = arr[right];
+            right++;
         }
-    }
-    forn(i,0,n){
-        forn(j,0,m){
-            char t2;
-            cin>>t2;
-            b[i][j] = t2-'0';
-            y = (y+b[i][j])%3;
-        }
-    }
-    int diff[n][m];
-    int d= 0;
-    forn(i,0,n){
-        forn(j,0,m){
-            diff[i][j] = abs(a[i][j] - b[i][j]);
-            d+= diff[i][j];
-            d%=3;          
-        }
-    }
-    forn(i,0,n){
-        forn(j,0,m){
-            cout<<diff[i][j];
-                    
-        }
-        cout<<endl;
+        ind++;
     }
 
-    cout<<d<<endl;
-    if(d%3!=0){
-        pno;
+
+
+    while (left <= mid) {
+        temp[ind] = arr[left];
+        left++;
     }
-    if(x%3==y%3){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
+    while (right <= high) {
+        temp[ind] = arr[right];
+        right++;
     }
 
-    
+    for (int i = 0; i < high - low + 1; i++) {
+        arr[low + i] = temp [i];
+    }
+
+}
+
+void mergeSort(int arr[], int low, int high) {
+    if (low >= high) return;
+
+    int mid = (low + high) / 2;
+
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, high);
+    merge(arr, low, mid, high);
+}
+
+
+void solve() {
+
+    int a[] = {12312, 53, 121, 1, -23, 11, 11};
+    mergeSort(a, 0 , sizeof(a) / sizeof(a[0]));
+    for (auto x : a)
+        cout << x << " ";
+    cout << "as";
 }
 int main() {
-    #ifndef ONLINE_JUDGE
+#ifndef ONLINE_JUDGE
     // for getting input from input.txt
 
-    freopen("input1.txt", " r",stdin) ;
+    freopen("input1.txt", " r", stdin) ;
     // for writing output to output .txt
     freopen("output1.txt" , "w" , stdout);
-    #endif
+#endif
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    int t=1;
-    cin>>t;
-    
-    while(t--) 
-            solve();
+
+    solve();
+
     return 0;
 }
 

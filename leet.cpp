@@ -1,33 +1,54 @@
 class Solution {
+private:
+    void dfs(int i, int j, int m, int n, vector<vector<int>>& grid,vector<vector<int>>& vis,  int tot){
+        if(vis[i][j]) return;
+        if(i<0||j<0||i>=m||j>=n){
+            tot--;
+        }
+        vis[i][j] = 1;
+        dfs(i+1,j,m,n,grid,vis, tot);
+        dfs(i-1,j,m,n,grid,vis, tot);
+        dfs(i,j-1,m,n,grid,vis, tot);
+        dfs(i,j+1,m,n,grid,vis, tot);
+    }
 public:
-    bool canPartition(vector<int>& nums) {
-        int t = 0, n = nums.size();
-        for(auto x:nums) t+=x;
-        if(t&1) return false;
-        t/=2;
-        vector<vector<bool>> dp(n, vector<bool>(t+1,false));
-
-        for (int i = 0; i < n; ++i)
+    int numEnclaves(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size(), tot = 0;
+        for (int i = 0; i < m; ++i)
         {
-            dp[i][0] = true;
-        }
-
-        if(arr[0]<=t){
-            dp[0][arr[0]] = true;
-        }
-        for (int i = 0; i < n; ++i)
-        {
-            for (int j = 0; j < t; ++j)
+            for (int j = 0; j < n; ++j)
             {
-                bool notTaken = dp[i-1][t];
-
-                bool taken = false;
-                if(arr[i]<=t){
-                    taken = dp[i-1][t - arr[i]];
+                if (grid[i][j]==1)
+                {
+                    tot++;
                 }
-                dp[i][t] = notTaken || taken;
             }
         }
-        return dp[n-1][t];
+        vector<vector<int>> vis(m, std::vector<int>(n,0));
+        for (int i = 0; i < m; ++i)
+        {
+            if(grid[i][0]==1&& !vis[i][0]){
+                dfs(i,0,m,n,grid,vis,tot);
+            }
+        }
+        for (int i = 0; i < m; ++i)
+        {
+            if(grid[i][n-1]==1&& !vis[i][n-1]){
+                dfs(i,n-1,m,n,grid,vis,tot);
+            }
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            if(grid[0][i]==1&& !vis[0][i]){
+                dfs(0,i,m,n,grid,vis,tot);
+            }
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            if(grid[m-1][i]==1&& !vis[m-1][i]){
+                dfs(m-1,i,m,n,grid,vis,tot);
+            }
+        }
+        return tot;
     }
 };
