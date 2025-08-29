@@ -17,10 +17,26 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    ll a[n];
-    forn(i,0,n) cin>>a[i];
+    ll n, s;
+    cin>>n>>s;
+    ll a[n], count[3] = {0};
+    ll totalsum = 0;
+    forn(i,0,n){ 
+        
+        cin>>a[i];
+        count[a[i]]++;
+        totalsum += a[i];
+    }
+
+    if(s<totalsum || (s== totalsum+1)){
+        forn(i,0,count[0]) cout<<0<<" ";
+        forn(i,0,count[2]) cout<<2<<" ";
+        forn(i,0,count[1]) cout<<1<<" ";
+        cout<<endl;
+    }else{
+        cout<<-1<<endl;
+    }
+
     
     
 }

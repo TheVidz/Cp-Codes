@@ -17,31 +17,37 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    ll a[n];
-    ll count[101] = {0};
+    ll n,k;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+    int a[n];
+   
+    forn(i,0,n){
+        if(s[i] == '1'){
+            a[i] = 1;
+    }}
 
+    ll cnt = 0, max_cnt = 0;
     forn(i,0,n) {
-        cin>>a[i];
-        count[a[i]]++;
+        if(a[i] == 1) cnt++;
+        else cnt = 0;
+        max_cnt = max(max_cnt, cnt);
     }
-    int ans = 0;
+    if(max_cnt >= k) {cout<<"NO"<<endl;return;}
+    else {cout<<"YES"<<endl;}
+    ll p = 1, q = n;
 
-    forn(i,0,101){
-        if(count[i]>=2){
-            ans = 1;
-            break;
+    for(int i = 0;i<n;i++){
+        if(a[i] == 1){
+            cout<<p<<" ";
+            p++;
+        }else{
+            cout<<q<<" ";
+            q--;
         }
     }
-    if(ans){
-        pyes;
-    }else{
-        pno;
-    }
-
-    
-    
+    cout<<endl;
 }
 
 int main()

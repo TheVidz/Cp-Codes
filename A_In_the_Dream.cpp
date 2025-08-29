@@ -17,31 +17,18 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    ll a[n];
-    ll count[101] = {0};
+    ll a,b,c,d;
+    cin>>a>>b>>c>>d;
+    ll e = c-a, f = d-b;
+    if(b>a) swap(a,b);
+    if(f>e) swap(f,e);
 
-    forn(i,0,n) {
-        cin>>a[i];
-        count[a[i]]++;
-    }
-    int ans = 0;
-
-    forn(i,0,101){
-        if(count[i]>=2){
-            ans = 1;
-            break;
-        }
-    }
-    if(ans){
+    if((e<=(2*f+2))&&(a<=(2*b+2))){
         pyes;
     }else{
         pno;
     }
 
-    
-    
 }
 
 int main()

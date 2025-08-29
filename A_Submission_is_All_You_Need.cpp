@@ -20,26 +20,8 @@ void solve(){
     ll n;
     cin>>n;
     ll a[n];
-    ll count[101] = {0};
-
-    forn(i,0,n) {
-        cin>>a[i];
-        count[a[i]]++;
-    }
-    int ans = 0;
-
-    forn(i,0,101){
-        if(count[i]>=2){
-            ans = 1;
-            break;
-        }
-    }
-    if(ans){
-        pyes;
-    }else{
-        pno;
-    }
-
+    forn(i,0,n) cin>>a[i];
+    sort(a,a+n);
     
     
 }
