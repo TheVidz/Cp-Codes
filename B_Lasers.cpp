@@ -17,8 +17,15 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll n,m,x,y;
+    cin>>n>>m>>x>>y;
+    ll a[n], b[m];ll ans = 0;
+    forn(i,0,n) {cin>>a[i]; if(a[i]<=y) ans++;
+    }
+    forn(i,0,m) {cin>>b[i];if(b[i]<=x) ans++;}
+    cout<<ans<<endl;
+    
+
     
 }
 

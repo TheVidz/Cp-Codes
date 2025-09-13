@@ -19,6 +19,19 @@ void solve(){
     
     ll n;
     cin>>n;
+    string s;
+    cin>>s;
+    ll trip = 0;
+    
+
+    forn(i,0,n-2){
+        if(s[i]==s[i+2]){
+            trip++;
+        }
+    }
+    cout<<(n-trip-1)<<endl;
+
+    
     
 }
 

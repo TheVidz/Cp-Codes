@@ -19,6 +19,37 @@ void solve(){
     
     ll n;
     cin>>n;
+    ll a[n];
+    vector<ll> odds, evens;
+
+    forn(i,0,n) {
+        cin>>a[i];
+        if(a[i]&1) 
+            odds.push_back(a[i]);
+        else 
+            evens.push_back(a[i]); 
+        }
+
+sort(all(odds));
+sort(all(evens));
+
+ll ans = 0;
+ll inlen = odds.size();
+
+
+if(inlen>0){
+ans += odds.back();
+for(auto x:evens) ans+=x;
+for(int i = (inlen)/2;i<inlen-1;i++) ans+= odds[i];
+
+cout<<ans<<endl;
+}else{
+    cout<<0<<endl;
+}
+
+   
+    
+
     
 }
 

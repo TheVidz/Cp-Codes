@@ -17,8 +17,21 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll n,m;
+    cin>>n>>m;
+    ll left = m - n + 1;
+    if(left<=0 || m< n ||){
+        cout<<-1<<endl;
+    }else{
+        cout<<left<<endl;
+        ll last = left;
+        forn(i,1, n+1){
+            if(i!=left){
+                cout<<last<<" "<<i<<endl;
+                last = i;
+            }
+        }
+    }
     
 }
 

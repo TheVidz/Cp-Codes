@@ -17,8 +17,13 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll x,n;
+    cin>>x>>n;
+    if(n&1){
+        cout<<x<<endl;
+    }else{
+        cout<<0<<endl;
+    }
     
 }
 

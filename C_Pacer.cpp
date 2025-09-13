@@ -17,8 +17,30 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll n,m;
+    cin>>n>>m;
+    ll a[n], b[n];
+    ll ans = 0,  currside = 0, currtime = 0;
+    forn(i,0,n) {
+        
+        cin>>a[i]>>b[i];
+        if(currside!=b[i]){
+            if((a[i]-currtime)&1) ans+=a[i]-currtime;
+            else ans+=a[i]-currtime-1;
+            currside = b[i];
+            currtime = a[i];
+        }else{
+            if((a[i]-currtime)&1) ans+=a[i]-currtime-1;
+            else ans+=a[i]-currtime;
+            
+            currside = b[i];
+            currtime = a[i];
+        }
+    }
+    ans += m-currtime;
+    cout<<ans<<endl;
+    
+
     
 }
 

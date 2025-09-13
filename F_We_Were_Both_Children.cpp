@@ -19,6 +19,19 @@ void solve(){
     
     ll n;
     cin>>n;
+    vector<ll> a(n);
+    forn(i,0,n) cin>>a[i];
+    map<int,int>mp;
+    forn(i,0,n)
+        mp[a[i]]++;
+    vector<int>traps(n+1,0);
+    for(auto i:mp){
+        for(int j=i.first;j<=n;j+=i.first){
+            traps[j]+=i.second;
+        }
+    }
+    cout<<*max_element(traps.begin(),traps.end())<<"\n";
+    
     
 }
 
