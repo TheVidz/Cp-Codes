@@ -17,7 +17,8 @@
         "*.tcc": "cpp",
         "cstdlib": "cpp",
         "bitset": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iosfwd": "cpp"
     },
     "code-runner.runInTerminal": true
 }

@@ -29,7 +29,7 @@ void solve(){
         }
     }
     for(int i=1;i<=m;i++){
-        if(cnt[i]==0) pno;
+        if(cnt[i]==0) {pno;}
     }
     int removable=0;
     forn(i,0,n){
@@ -39,8 +39,8 @@ void solve(){
         }
         if(ok) removable++;
     }
-    if(removable>=2) {cout<<"bl"<<endl;}
-    else {cout<<"no"<<endl;}
+    if(removable>=2) {cout<<"YES"<<endl;}
+    else {cout<<"NO"<<endl;}
 }
 
 int main()

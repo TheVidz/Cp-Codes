@@ -14,12 +14,16 @@ typedef vector<ll> vll;
 
 const int INF = 1e9;
 const ll mod = 1000000007;
-//The only verdict is vengeance; a vendetta, held as a votive, not in vain, for the value and veracity of such shall one day vindicate the vigilant and the virtuous.
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll x,n;
+    cin>>x>>n;
+    if(n&1){
+        cout<<x<<endl;
+    }else{
+        cout<<0<<endl;
+    }
     
 }
 

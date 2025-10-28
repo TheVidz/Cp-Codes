@@ -19,45 +19,35 @@ void solve(){
     
     ll n;
     cin>>n;
-    cout<<"asd";
-    vll b(n);
-    ll tot = 0;
-    vector<vll> freq(n,vector<ll>());
-    cout<<"asd";
-    forn(i,0,n){ 
-        cin>>b[i];
-        freq[b[i]].push_back(i);}
+    ll arr[n];
+    forn(i,0,n) cin>>arr[i];
     
+    vector<vector<ll>> freq(n+1);
 
-    bool poss = true;
-
-    forn(i,0,n){
-        if(freq[i].size()%(i+1)!=0)
-        {
-            poss = false;
-            break;
-        }
-    }
-    if(poss){
-        cout<<"asd";
-        ll curr = 1;
-        vll a(n,0);
-        forn(i,0,n){
-            ll j = 0;
-            while(j<freq[i].size()){
-                forn(k,0,i+1){
-                    a[freq[i][j]] = curr;
-                }
-                j++;
+    forn(i,0,n) {freq[arr[i]].push_back(i);}
+    
+    vll ans(n,0);
+    ll curr = 1;
+    forn(i,1,n+1){
+        if((freq[i].size()%i)!=0){
+            cout<<-1<<endl;
+            return;
+        }else{
+        ll k = 0;
+        while(k < freq[i].size()){
+            forn(j,0,i){
+                ans[freq[i][k]] = curr;
+                k++;
             }
             curr++;
         }
-        forn(i,0,n) 
-            cout<<a[i];
-        cout<<endl;
-    }else{
-        cout<<-1<<endl;
+        }
+        
     }
+
+    forn(i,0,n) cout<<ans[i]<<" ";
+    cout<<endl;
+
 }
 
 int main()
@@ -66,11 +56,11 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     
-    int t=1;
+    int t;
     cin>>t;
-    cout<<"asd";
-        while(t--) 
-            solve();
+    
+    while(t--) 
+        solve();
 
-        return 0;
+    return 0;
 }

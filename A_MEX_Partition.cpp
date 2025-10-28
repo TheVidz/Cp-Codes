@@ -14,14 +14,27 @@ typedef vector<ll> vll;
 
 const int INF = 1e9;
 const ll mod = 1000000007;
+
 //The only verdict is vengeance; a vendetta, held as a votive, not in vain, for the value and veracity of such shall one day vindicate the vigilant and the virtuous.
+
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll n; 
+    cin >> n;
+    vector<int> freq(102, 0);
+    for (int i = 0; i < n; ++i) {
+        ll a; 
+        cin >> a;
+        if (a >= 0 && a <= 101) freq[a]++;
+    }
+    int mex = 0;
+    while (mex <= 101 && freq[mex] > 0) ++mex;
+    cout << mex << '\n';
     
 }
+
+
 
 int main()
 {
@@ -31,6 +44,8 @@ int main()
     
     int t=1;
     cin>>t;
+
+
     
         while(t--) 
             solve();

@@ -16,31 +16,22 @@ const int INF = 1e9;
 const ll mod = 1000000007;
 
 void solve(){
-    int n,m; 
-    cin>>n>>m;
-    vector<vi> sets(n);
-    vector<int> cnt(m+1,0);
-    forn(i,0,n){
-        int l; cin>>l;
-        sets[i].resize(l);
-        forn(j,0,l){
-            cin>>sets[i][j];
-            cnt[sets[i][j]]++;
-        }
+    ll n;
+    cin>>n;
+    vi a(n);
+    forn(i,0,n) cin>>a[i];
+    map<int,int> cnt;
+    for(auto x:a) cnt[x]++;
+    vi freq;
+    for(auto &p:cnt) freq.pb(p.second);
+    int ans=0;
+    int mx=*max_element(all(freq));
+    forn(k,1,mx+1){
+        int have=0;
+        for(auto f:freq) if(f>=k) have++;
+        ans=max(ans,have*k);
     }
-    for(int i=1;i<=m;i++){
-        if(cnt[i]==0) pno;
-    }
-    int removable=0;
-    forn(i,0,n){
-        bool ok=true;
-        for(int x: sets[i]){
-            if(cnt[x]==1){ ok=false; break; }
-        }
-        if(ok) removable++;
-    }
-    if(removable>=2) {cout<<"bl"<<endl;}
-    else {cout<<"no"<<endl;}
+    cout<<ans<<"\n";
 }
 
 int main()
@@ -53,6 +44,5 @@ int main()
     cin>>t;
     while(t--) 
         solve();
-
     return 0;
 }
