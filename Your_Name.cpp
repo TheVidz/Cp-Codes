@@ -30,14 +30,29 @@ const ll mod = 1000000007;
 
 
 void solve(){
-    int a, b,c,d;
-    cin>>a>>b>>c>>d;
-    if(a==b&&b==c&&c==d&& d==a){
+    string s, t;
+    int n;
+    cin>>n>>s>>t;
+    int sc[26] = {0}, tc[26] = {0};
+    for(auto c:s){
+        sc[c-'a']++;
+    }
+    for(auto c:t){
+        tc[c-'a']++;
+    }
+    bool poss = true;
+    for(int i = 0; i < 26;i++){
+        if(sc[i]!=tc[i]){
+            poss = false;
+            break;
+        }
+    }
+
+    if(poss){
         cout<<"YES"<<endl;
     }else{
         cout<<"NO"<<endl;
     }
-    
     
     
 }

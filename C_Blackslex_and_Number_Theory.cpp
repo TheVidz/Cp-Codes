@@ -16,28 +16,18 @@ const int INF = 1e9;
 const ll mod = 1000000007;
 //The only verdict is vengeance; a vendetta, held as a votive, not in vain, for the value and veracity of such shall one day vindicate the vigilant and the virtuous.
 
-void solve(){
-    
-    ll n;
-    cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
-
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    forn(i,0,n) cin >> a[i];
+    sort(a.begin(), a.end());
+    cout << max(a[0], a[1] - a[0]) << endl;
 }
 
-int main(){
-    
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    
-    int t=1;
-    cin>>t;
-    
-    while(t--){
-        solve();
-        
-    }
-
+int main() {
+    int t;
+    cin >> t;
+    while (t--) solve();
     return 0;
 }

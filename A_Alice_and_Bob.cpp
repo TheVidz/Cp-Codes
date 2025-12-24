@@ -18,15 +18,30 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    ll n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    
+    ll ans = 0;
+    ll x = -1;
+    
+    forn(i, 0, n) {
+        if(s[i] == '1') {
+            x = max(x, i + k);
+        }
+        
+        if(i > x) {
+            ans++;
+        }
+    }
+    cout << ans << endl;
+
 
 }
 
-int main(){
-    
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -34,10 +49,10 @@ int main(){
     int t=1;
     cin>>t;
     
-    while(t--){
-        solve();
-        
-    }
-
-    return 0;
+        while(t--) 
+            {
+            solve();
+            
+}
+        return 0;
 }

@@ -4,8 +4,8 @@ using namespace std;
 #define pb push_back 
 #define all(v) v.begin(), v.end()
 #define forn(i, k, n) for(ll i = k; i < n; i++)
-#define pyes cout<<"YES"<<endl;return
-#define pno cout<<"NO"<<endl;return
+#define pyes cout<<"Yes"<<endl;return
+#define pno cout<<"No"<<endl;return
 
 typedef long long ll;
 typedef pair<ll, ll> pll;
@@ -22,11 +22,20 @@ void solve(){
     cin>>n;
     vll arr(n);
     forn(i,0,n) cin>>arr[i];
+    
+    ll mn = LLONG_MAX;
+    forn(i, 0, n -1) {
+        mn = min(mn, arr[i]);
+        if (mn == n - i) {
+            pno;
+        }
+    }
+    pyes;
 
 }
 
-int main(){
-    
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -34,10 +43,10 @@ int main(){
     int t=1;
     cin>>t;
     
-    while(t--){
-        solve();
-        
-    }
-
-    return 0;
+        while(t--) 
+            {
+            solve();
+            
+}
+        return 0;
 }

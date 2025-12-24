@@ -18,10 +18,23 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
+    int n;
     cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    vector<string> arr1(n), arr2(n);
+    forn(i,0,n) cin>>arr1[i];
+    // forn(i,0,n) arr2[i] = arr1[i];
+
+    string ans = arr1[0], curr = arr1[0];
+
+    forn(i,1,n){
+        if(curr > arr1[i]){
+            ans = arr1[i] + ans;
+            curr = ans;
+        }else{
+            ans = ans + arr1[i];
+        }
+    }
+    cout<<ans<<endl;
 
 }
 

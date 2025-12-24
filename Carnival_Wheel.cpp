@@ -18,11 +18,14 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    ll l,a,b;
+    cin>>l>>a>>b;
+    ll mxm = a;
 
+    forn(i,0,l+1){
+        mxm = max(mxm, ((a+i*b)%l));
+    }
+    cout<<mxm<<endl;
 }
 
 int main(){

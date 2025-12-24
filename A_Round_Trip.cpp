@@ -18,15 +18,40 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    ll r, x, d , n;
+    cin>>r>>x>>d>>n;
+
+    string arr;
+    cin>>arr;
+
+    int del = abs(r-x);
+
+    int ans = 0;
+
+    for(char c:arr){
+        if(c=='1'){
+            ans++;
+            if(del>=0){
+                del-=d;
+            }else{
+                continue;
+            }
+        }else{
+            if(abs(r  - x) < abs(del) || r < x) {
+                ans++;
+            }
+        }
+
+    }
+    cout<<ans<<endl;
+
+    
+    
 
 }
 
-int main(){
-    
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -34,10 +59,10 @@ int main(){
     int t=1;
     cin>>t;
     
-    while(t--){
-        solve();
-        
-    }
-
-    return 0;
+        while(t--) 
+            {
+            solve();
+            
+}
+        return 0;
 }

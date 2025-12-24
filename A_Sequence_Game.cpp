@@ -18,11 +18,20 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
+    int n;
     cin>>n;
     vll arr(n);
     forn(i,0,n) cin>>arr[i];
+    int x;
+    cin>>x;
 
+    int mx = *max_element(all(arr)), mn = *min_element(all(arr));
+
+    if(x<=mx && x>=mn){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
+    }
 }
 
 int main(){

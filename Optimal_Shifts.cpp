@@ -20,8 +20,41 @@ void solve(){
     
     ll n;
     cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    string s;
+    cin>>s;
+
+    int mx = 0, ans = 0;
+
+    for(int i = 0; i< n;i++){
+        if(s[i] == '1'){
+            mx = max(mx, ans);
+            ans = 0;
+            
+        }else{
+            ans++;
+        }
+    }
+    mx = max(mx,ans);
+
+    int ends = 0;
+    if(s[0]=='0' && s[n-1]=='0'){
+        int temp = 0, temp2 = 0;
+        forn(i,0,n){
+            if(s[i]=='1')
+                break;
+            temp++;
+        }
+        forn(i,0,n){
+            if(s[n-i-1]=='1')
+                break;
+            temp2++;
+        }
+
+        ends=temp+temp2;
+    }
+    mx = max(mx, ends);
+    
+    cout<<mx<<endl;
 
 }
 

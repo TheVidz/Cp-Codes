@@ -30,14 +30,33 @@ const ll mod = 1000000007;
 
 
 void solve(){
-    int a, b,c,d;
-    cin>>a>>b>>c>>d;
-    if(a==b&&b==c&&c==d&& d==a){
-        cout<<"YES"<<endl;
+    int n;
+    cin>>n;
+
+    int arr[n], dup[n];
+    bool allOdd = true, allEven = true;
+    for(int i = 0;i<n;i++) {cin>>arr[i];
+    dup[i] = arr[i];
+    if(arr[i]&1){
+        allEven = false;
     }else{
-        cout<<"NO"<<endl;
+        allOdd = false;
+    }}
+    sort(dup, dup+n);
+
+    if(allEven || allOdd){
+        for(int i = 0;i<n;i++){
+            cout<<arr[i]<<" ";
+        }
+    }else{
+        for(int i = 0;i<n;i++){
+            cout<<dup[i]<<" ";
+        }
     }
-    
+    cout<<endl;
+
+
+
     
     
 }

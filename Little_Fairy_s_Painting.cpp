@@ -22,6 +22,20 @@ void solve(){
     cin>>n;
     vll arr(n);
     forn(i,0,n) cin>>arr[i];
+    set<ll> st;
+
+    forn(i,0,n) st.insert(arr[i]);
+
+    ll d = st.size();
+
+    sort(all(arr));
+
+    forn(i,0,n){
+        if(arr[i]>=d){
+            cout<<arr[i]<<endl;
+            return;
+        }
+    }
 
 }
 

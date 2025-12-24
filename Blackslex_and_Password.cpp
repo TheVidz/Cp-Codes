@@ -18,10 +18,9 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    int k, x;
+    cin>>k>>x;
+    cout<<(k*x+1)<<endl;
 
 }
 

@@ -18,15 +18,27 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
+    int n;
     cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    vll a(n), b(n);
+    forn(i,0,n) cin>>a[i];
+    forn(i,0,n) cin>>b[i];
+
+    ll mx = 0;
+    ll mn = 0;
+
+    forn(i, 0, n) {
+        ll next_mx = max(mx - a[i], b[i] - mn);
+        ll next_mn = min(mn - a[i], b[i] - mx);
+        mx = next_mx;
+        mn = next_mn;
+    }
+    cout << mx << endl;
 
 }
 
-int main(){
-    
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -34,10 +46,10 @@ int main(){
     int t=1;
     cin>>t;
     
-    while(t--){
-        solve();
-        
-    }
-
-    return 0;
+        while(t--) 
+            {
+            solve();
+            
+}
+        return 0;
 }

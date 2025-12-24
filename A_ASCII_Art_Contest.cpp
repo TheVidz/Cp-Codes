@@ -18,26 +18,34 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
-    cin>>n;
+    ll n = 3;
+    //cin>>n;
     vll arr(n);
     forn(i,0,n) cin>>arr[i];
+    
+    sort(all(arr));
+
+    if((arr[2]-arr[0])>=10){
+        cout<<"check again"<<endl;
+    }else{
+        cout<<"final "<<arr[1]<<endl;
+    }
 
 }
 
-int main(){
-    
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
     
     int t=1;
-    cin>>t;
+    //cin>>t;
     
-    while(t--){
-        solve();
-        
-    }
-
-    return 0;
+        while(t--) 
+            {
+            solve();
+            
+}
+        return 0;
 }

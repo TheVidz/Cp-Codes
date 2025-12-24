@@ -18,10 +18,29 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n;
+    int n;
     cin>>n;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    vll a(n);
+    forn(i,0,n) cin>>a[i];
+
+    ll total_sum = 0;
+    for (int i = 0; i <n-1; i++) {
+        total_sum +=abs(a[i+1]- a[i]);
+    }
+
+    ll max_reduction = 0;
+    max_reduction = max(max_reduction, abs(a[1] - a[0]));
+
+    max_reduction = max(max_reduction, abs(a[n-1] - a[n-2]));
+
+    for (int i = 1; i < n - 1; i++) {
+        ll current_segments = abs(a[i] - a[i-1]) +abs(a[i+1] - a[i]);
+        ll bridged_segment = abs(a[i+1] -a[i-1]);
+        ll reduction = current_segments -bridged_segment;
+        max_reduction = max(max_reduction,reduction);
+    }
+    cout <<total_sum- max_reduction <<endl;
+    
 
 }
 
