@@ -22,7 +22,6 @@ void solve(){
     cin>>n;
     vector<string> arr1(n), arr2(n);
     forn(i,0,n) cin>>arr1[i];
-    // forn(i,0,n) arr2[i] = arr1[i];
 
     string ans = arr1[0], curr = arr1[0];
 
