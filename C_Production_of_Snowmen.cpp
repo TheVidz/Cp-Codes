@@ -16,28 +16,38 @@ const int INF = 1e9;
 const ll mod = 1000000007;
 //The only verdict is vengeance; a vendetta, held as a votive, not in vain, for the value and veracity of such shall one day vindicate the vigilant and the virtuous.
 
+ll get_valid_shifts(int n, vll &v1, vll &v2) {
+    ll count = 0;
+    forn(shift,0,n) {
+        bool ok = true;
+        forn(i,0,n) {
+            if(v1[i]>=v2[(i + shift) % n]) {
+                ok = false;
+                break;
+            }
+        }
+        if(ok) 
+            count++;
+    }
+    return count;
+}
 void solve(){
     
-    ll n, a;
-    cin>>n>>a;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    ll n;
+    cin>>n;
+    vll a(n),b(n),c(n);
+    forn(i,0,n) cin>>a[i];
+    forn(i,0,n) cin>>b[i];
+    forn(i,0,n) cin>>c[i];
 
-    sort(all(arr));
-    
-    int it = lower_bound(all(arr),a) - arr.begin();
-
-    if(it < n - it){
-        cout<<a+1<<endl;
-    }else{
-        cout<<max(0ll, a-1)<<endl;
-    }
-
+    ll ab = get_valid_shifts(n, a,b);
+    ll bc = get_valid_shifts(n,b,c);
+    cout<<n*ab*bc<<endl;
 
 }
 
-int main()
-{
+int main(){
+    
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
@@ -45,10 +55,10 @@ int main()
     int t=1;
     cin>>t;
     
-        while(t--) 
-            {
-            solve();
-            
-}
-        return 0;
+    while(t--){
+        solve();
+        
+    }
+
+    return 0;
 }

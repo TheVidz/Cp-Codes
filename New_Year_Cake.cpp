@@ -18,21 +18,28 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n, a;
-    cin>>n>>a;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
-
-    sort(all(arr));
+    ll a,b;
+    cin>>a>>b;
     
-    int it = lower_bound(all(arr),a) - arr.begin();
+    ll h=0, type1= 0,type2 =0;       
+    ll current_layer =1; 
 
-    if(it < n - it){
-        cout<<a+1<<endl;
-    }else{
-        cout<<max(0ll, a-1)<<endl;
+    while(true){
+        if (h % 2 == 0) {
+            type1 += current_layer;
+        } else {
+            type2 += current_layer;
+        }
+        bool possible = (a>=type1 && b>=type2)||(a>=type2 && b>=type1);
+
+        if (!possible) {
+            break;
+        }
+        h++;
+        current_layer *= 2;
     }
-
+    
+    cout<<h<<endl;
 
 }
 

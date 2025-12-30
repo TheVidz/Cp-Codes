@@ -18,19 +18,16 @@ const ll mod = 1000000007;
 
 void solve(){
     
-    ll n, a;
-    cin>>n>>a;
-    vll arr(n);
-    forn(i,0,n) cin>>arr[i];
-
-    sort(all(arr));
-    
-    int it = lower_bound(all(arr),a) - arr.begin();
-
-    if(it < n - it){
-        cout<<a+1<<endl;
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    if(s.find("2026")!=std::string::npos){
+        cout<<0<<endl;
+    }else if(s.find("2025")!=std::string::npos){
+        cout<<1<<endl;
     }else{
-        cout<<max(0ll, a-1)<<endl;
+        cout<<0<<endl;
     }
 
 
