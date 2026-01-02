@@ -23,7 +23,7 @@ void solve(){
     ll vol = w*h*d;
 
     if(vol%n==0){
-        
+        cout<<w<<endl;
     }else{
         cout<<-1<<endl;
     }
