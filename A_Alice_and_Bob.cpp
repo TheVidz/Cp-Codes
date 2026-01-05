@@ -21,16 +21,16 @@ void solve(){
     ll n, a;
     cin>>n>>a;
     vll arr(n);
-    forn(i,0,n) cin>>arr[i];
+    ll l=0, r = 0;
 
-    sort(all(arr));
-    
-    int it = lower_bound(all(arr),a) - arr.begin();
+    forn(i,0,n) {cin>>arr[i];
+    if(a>arr[i])    l++;
+    if(a<arr[i])    r++;}
 
-    if(it < n - it){
-        cout<<a+1<<endl;
+    if(l>r){
+        cout<<a-1<<endl;
     }else{
-        cout<<max(0ll, a-1)<<endl;
+        cout<<a+1<<endl;
     }
 
 
