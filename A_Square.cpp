@@ -30,24 +30,13 @@ const ll mod = 1000000007;
 
 
 void solve(){
-    pair<int,int> arr[4];
-    for (int i = 0; i < 4; i++)
-    {   
-        
-        int x,y;
-        cin>>x>>y;
-        arr[i].first = x;
-        arr[i].second = y;
-
+    int a, b,c,d;
+    cin>>a>>b>>c>>d;
+    if(a==b&&b==c&&c==d&& d==a){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
     }
-    ll ans=0;
-    for (int i = 0; i < 4; i++)
-    {
-        if(arr[i].first!=arr[0].first&&arr[i].second!=arr[0].second){
-            ans=abs(arr[i].first-arr[0].first)*abs(arr[i].first-arr[0].first);
-        }
-    }
-    cout<<ans<<endl;
     
     
     
